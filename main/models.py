@@ -9,3 +9,9 @@ class Link(models.Model):
     scrapped = models.BooleanField(default=False)
     created_at = models.DateField(auto_now=True)
     is_keyword = models.BooleanField(default=False)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=('is_keyword',), name='keyword_links_index'),
+            models.Index(fields=('title', ), name='title_links_index'),
+        ]
