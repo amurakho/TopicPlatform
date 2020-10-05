@@ -1,3 +1,16 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+from main.models import Link
+
+
+class MainView(ListView):
+    model = Link
+
+
+class ScrappersRunView():
+    pass
+
+
+class ScrappingStatusView():
+    pass
