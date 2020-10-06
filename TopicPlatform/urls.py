@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('api/', include('api.urls')),
 
-
+    path('silk/', include('silk.urls', namespace='silk')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]

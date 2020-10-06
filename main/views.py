@@ -3,14 +3,14 @@ from django.views.generic import ListView
 
 from main.models import Link
 
-class
-
 
 class MainView(ListView):
     model = Link
-
-    # def get_queryset(self):
-
+    queryset = {
+        'with_keyword': Link.objects.filter(is_keyword=True)[:20],
+        'without_keyword': Link.objects.filter(is_keyword=False)[:20],
+    }
+    template_name = 'links_lists.html'
 
 
 class ScrappersRunView():

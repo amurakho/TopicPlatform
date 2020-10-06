@@ -15,3 +15,4 @@ class Link(models.Model):
             models.Index(fields=('is_keyword',), name='keyword_links_index'),
             models.Index(fields=('title', ), name='title_links_index'),
         ]
+        ordering = ('created_at', )
