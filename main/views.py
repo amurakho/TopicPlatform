@@ -5,6 +5,7 @@ from django.views.generic.edit import FormMixin
 
 from main.models import Link
 from main.forms import ScrapperLauncherForm
+from main.tasks import add
 
 
 class MainView(FormMixin, ListView):
@@ -19,6 +20,7 @@ class MainView(FormMixin, ListView):
     def post(self, *args, **kwargs):
         if self.request.is_ajax:
             # todo: CELERY LAUNCH SCRAPPERS
+            add.delay(2, 5)
             return JsonResponse({'status': 'OK'}, status=200)
         return JsonResponse({'error': ''}, status=400)
 

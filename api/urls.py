@@ -1,5 +1,7 @@
 from django.urls import path
 
-urlpatterns = [
+from api.views import LinksListView
 
+urlpatterns = [
+    path('links/', LinksListView.as_view())
 ]
