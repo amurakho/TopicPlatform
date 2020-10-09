@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <form method="post" action="{% url 'launch' %}" id="scrapper-launch-form">
+    <form method="post" action="{% url 'main' %}" id="scrapper-launch-form">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Launch">
