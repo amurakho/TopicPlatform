@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'silk',
     'django_extensions',
     'debug_toolbar',
+    'django_celery_results',
+    'celery',
 
     'api',
     'main',
@@ -148,3 +150,9 @@ SCRAPPERS = ('dwParser', )
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'

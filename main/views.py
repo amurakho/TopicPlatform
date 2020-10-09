@@ -18,14 +18,9 @@ class MainView(FormMixin, ListView):
 
     def post(self, *args, **kwargs):
         if self.request.is_ajax:
-            # todo: CELERY LAUCH SCRAPPERS
+            # todo: CELERY LAUNCH SCRAPPERS
             return JsonResponse({'status': 'OK'}, status=200)
         return JsonResponse({'error': ''}, status=400)
-
-
-def launch_scrapper(request):
-
-    pass
 
 
 class ScrappingStatusView():

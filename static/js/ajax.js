@@ -5,7 +5,6 @@ function launch_scrapper(e){
 $(document).ready(function (){
 
     $("#scrapper-launch-form").submit(function (e){
-
         e.preventDefault();
         var data = $(this).serializeArray();
         $.ajax({
