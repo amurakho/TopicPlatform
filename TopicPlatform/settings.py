@@ -144,3 +144,7 @@ STATIC_URL = '/static/'
 
 # todo: maybe should be auto
 SCRAPPERS = ('dwParser', )
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]

@@ -7,4 +7,4 @@ class ScrapperLauncherForm(forms.Form):
 
     all_scrappers = forms.BooleanField(widget=forms.CheckboxInput, initial=True)
     scrappers = forms.ChoiceField(choices=SCRAPPERS_CHOICE, disabled=True)
-    keywords = forms.CharField(help_text='Write keywords separated by comma(",")')
+    keywords = forms.CharField(help_text='Write keywords separated by comma(",")', required=False)

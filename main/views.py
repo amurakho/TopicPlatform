@@ -15,9 +15,10 @@ class MainView(FormMixin, ListView):
     template_name = 'links_lists.html'
     form_class = ScrapperLauncherForm
 
-    def form_valid(self, form):
-        keywords = form.cleaned_data['keywords'].split(',')
-        # todo:
+
+def launch_scrapper(request):
+    pass
+
 
 class ScrappingStatusView():
     pass
