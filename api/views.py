@@ -13,6 +13,12 @@ class LinksListView(APIView):
         serializer = LinkSerializer(links, many=True)
         return Response(serializer.data)
 
+    def post(self, request):
+        serializer = LinkSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=200)
+        return Response(serializer.errors, status=401)
 
 class LinkDetailView(APIView):
 
