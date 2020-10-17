@@ -1,28 +1,29 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework.mixins import ListModelMixin, CreateModelMixin
+from rest_framework.viewsets import ViewSet, ModelViewSet
+from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly
 from main.models import Link
 from api.serializers import LinkSerializer
 
 
-class LinksListView(APIView):
+class LinkViewSet(ModelViewSet):
+    permission_classes = (
+        IsAuthenticatedOrReadOnly,
+    )
+    queryset = Link.objects.all()
+    serializer_class = LinkSerializer
 
-    def get(self, request):
-        links = Link.objects.all()
-        serializer = LinkSerializer(links, many=True)
-        return Response(serializer.data)
 
-    def post(self, request):
-        serializer = LinkSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=200)
-        return Response(serializer.errors, status=401)
 
-class LinkDetailView(APIView):
+# class LinksListView(ListCreateAPIView):
+#     serializer_class = LinkSerializer
+#     queryset = Link.objects.all()
+#
+#
+# class LinkDetailView(RetrieveUpdateDestroyAPIView):
+#     serializer_class = LinkSerializer
+#     queryset = Link.objects.all()
 
-    def get(self, request, pk):
-        link = Link.objects.get(pk=pk)
-        serializer = LinkSerializer(link)
-        return Response(serializer.data)
